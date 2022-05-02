@@ -1,1 +1,2 @@
 # PokemonDAM
+Cristian Vasquez
