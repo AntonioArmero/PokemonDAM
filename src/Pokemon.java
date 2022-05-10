@@ -4,22 +4,24 @@ import java.util.Random;
 public class Pokemon {
 
     //Atributos
-    String nombre;
-    String mote;
-    int vitalidad;
-    int ataque;
-    int defensa;
-    int ataqueEsp;
-    int defensaEsp;
-    int velocidad;
-    int estamina = 100;
-    int nivel;
-    int experiencia;
-    int fertilidad;
+    private String nombre;
+    private String mote;
+    private int vitalidad;
+    private int ataque;
+    private int defensa;
+    private int ataqueEsp;
+    private int defensaEsp;
+    private int velocidad;
+    static int estamina = 100;
+    private int nivel;
+    private int experiencia;
+    private int fertilidad;
     //Enums
-    Tipo tipo1;
-    Tipo tipo2;
-    Estado estado;
+    private Tipo tipo1;
+    private Tipo tipo2;
+    private Estado estado;
+
+    Movimiento[] movimientos = new Movimiento[3];
 
 
     
@@ -181,6 +183,8 @@ public class Pokemon {
          
     }
 
+    
+
     //Completar método
     int atacar(){
         return 3;
@@ -188,11 +192,90 @@ public class Pokemon {
     
 
     //Completar método
-    int comprobarVentaja(){
-        return 3;
+    String comprobarVentaja(Pokemon ejemplo){
+        String ven;
+        switch (tipo1) {
+            case FUEGO : 
+                if (ejemplo.tipo1 == Tipo.PLANTA || ejemplo.tipo1 == Tipo.BICHO ) {
+                    ven = "ventaja";
+                    return ven;
+                    
+                }
+                else if (ejemplo.tipo1 == Tipo.TIERRA || ejemplo.tipo1 == Tipo.AGUA ) {
+                    ven = "desventaja";
+                    return ven;
+                    
+                }
+            case AGUA : 
+                if (ejemplo.tipo1 == Tipo.FUEGO  || ejemplo.tipo1 == Tipo.TIERRA) {
+                    ven = "ventaja";
+                    return ven;
+                    
+                }
+                else if (ejemplo.tipo1 == Tipo.PLANTA || ejemplo.tipo1 == Tipo.ELECTRICO ) {
+                    ven = "desventaja";
+                    return ven;
+                }
+
+            case PLANTA : 
+                if (ejemplo.tipo1 == Tipo.TIERRA  || ejemplo.tipo1 == Tipo.AGUA) {
+                    ven = "ventaja";
+                    return ven;    
+                }
+                else if (ejemplo.tipo1 == Tipo.FUEGO || ejemplo.tipo1 == Tipo.BICHO ) {
+                    ven = "desventaja";
+                    return ven;
+                }
+            case VOLADOR : 
+                if (ejemplo.tipo1 == Tipo.PLANTA || ejemplo.tipo1 == Tipo.BICHO) {
+                    ven = "ventaja";
+                    return ven;    
+                }
+                else if (ejemplo.tipo1 == Tipo.ELECTRICO || ejemplo.tipo1 == Tipo.TIERRA ) {
+                    ven = "desventaja";
+                    return ven;
+                }
+            case ELECTRICO : 
+                if (ejemplo.tipo1 == Tipo.AGUA || ejemplo.tipo1 == Tipo.VOLADOR) {
+                    ven = "ventaja";
+                    return ven;    
+                }
+                else if (ejemplo.tipo1 == Tipo.TIERRA || ejemplo.tipo1 == Tipo.PLANTA ) {
+                    ven = "desventaja";
+                    return ven;
+                }
+            case BICHO : 
+                if (ejemplo.tipo1 == Tipo.PLANTA || ejemplo.tipo1 == Tipo.AGUA) {
+                    ven = "ventaja";
+                    return ven;    
+                }
+                else if (ejemplo.tipo1 == Tipo.FUEGO || ejemplo.tipo1 == Tipo.VOLADOR ) {
+                    ven = "desventaja";
+                    return ven;
+                }
+            case TIERRA : 
+                if (ejemplo.tipo1 == Tipo.FUEGO || ejemplo.tipo1 == Tipo.ELECTRICO) {
+                    ven = "ventaja";
+                    return ven;    
+                }
+                else if (ejemplo.tipo1 == Tipo.PLANTA || ejemplo.tipo1 == Tipo.AGUA ) {
+                    ven = "desventaja";
+                    return ven;
+                }
+
+                break;
+        
+            
+            
+                  
+        }
+        ven = "Tipo no valido";
+        return ven;
+        
+        
     }
 
-    //Completar método
+    
     public void descansar(){
         estamina = 100;
     }
