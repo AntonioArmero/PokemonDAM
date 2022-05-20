@@ -24,9 +24,19 @@ public class Pokemon {
     Movimiento[] movimientos;
 
     //TODO: Hacer constructor pasándole todos los parámetros
-    public Pokemon(){
+    public Pokemon pokemonRdm(Pokemon pokemon){
+
+        Random random = new Random();
+        pokemon.vitalidad = random.nextInt(9) + 1;
+        pokemon.ataque = random.nextInt(9) + 1;
+        pokemon.defensa = random.nextInt(9) + 1;
+        pokemon.ataqueEsp = random.nextInt(9) + 1;
+        pokemon.defensaEsp = random.nextInt(9) + 1;
+        pokemon.velocidad = random.nextInt(9) + 1;
+        
 
         movimientos = new Movimiento[4];
+        return pokemon;
     }
 
     

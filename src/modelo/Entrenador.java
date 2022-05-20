@@ -8,7 +8,7 @@ public class Entrenador {
     //Meter un equpo de 4 pokemon
     //Meter caja pokemon 
     Random r1 = new Random();
-    int pokedolares = r1.nextInt(800, 1000) + 1;
+    int pokedolares = r1.nextInt(200) + 800;
 
 
     //Metodos
