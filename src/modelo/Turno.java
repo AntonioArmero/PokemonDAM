@@ -1,6 +1,7 @@
+package modelo;
 public class Turno {
 
-    //Atributos
+    //TODO: Ver vídeo
 
     int numeroTurno;
     //Meter accion de entrenador

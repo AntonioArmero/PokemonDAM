@@ -1,3 +1,4 @@
+package modelo;
 import java.util.Random;
 
 
@@ -12,7 +13,7 @@ public class Pokemon {
     private int ataqueEsp;
     private int defensaEsp;
     private int velocidad;
-    static int estamina = 100;
+    static int estamina;
     private int nivel;
     private int experiencia;
     private int fertilidad;
@@ -20,8 +21,15 @@ public class Pokemon {
     private Tipo tipo1;
     private Tipo tipo2;
     private Estado estado;
+    Movimiento[] movimientos;
 
-    Movimiento[] movimientos = new Movimiento[3];
+    //TODO: Hacer constructor pasándole todos los parámetros
+    public Pokemon(){
+
+        movimientos = new Movimiento[4];
+    }
+
+    
 
 
     
@@ -186,81 +194,77 @@ public class Pokemon {
     
 
     //Completar método
-    int atacar(){
+    public int atacar(){
         return 3;
     }
     
 
-    //Completar método
-    String comprobarVentaja(Pokemon ejemplo){
-        String ven;
+    //TODO: Completar método con el enumerado
+    public Ventaja comprobarVentaja(Pokemon ejemplo){
+
         switch (tipo1) {
             case FUEGO : 
                 if (ejemplo.tipo1 == Tipo.PLANTA || ejemplo.tipo1 == Tipo.BICHO ) {
-                    ven = "ventaja";
-                    return ven;
+                    return Ventaja.VENTAJA;
                     
                 }
                 else if (ejemplo.tipo1 == Tipo.TIERRA || ejemplo.tipo1 == Tipo.AGUA ) {
-                    ven = "desventaja";
-                    return ven;
+                    
+                    return Ventaja.DESVENTAJA;
                     
                 }
             case AGUA : 
                 if (ejemplo.tipo1 == Tipo.FUEGO  || ejemplo.tipo1 == Tipo.TIERRA) {
-                    ven = "ventaja";
-                    return ven;
+                    
+                    return Ventaja.VENTAJA;
                     
                 }
                 else if (ejemplo.tipo1 == Tipo.PLANTA || ejemplo.tipo1 == Tipo.ELECTRICO ) {
-                    ven = "desventaja";
-                    return ven;
+                    
+                    return Ventaja.DESVENTAJA;
                 }
 
             case PLANTA : 
                 if (ejemplo.tipo1 == Tipo.TIERRA  || ejemplo.tipo1 == Tipo.AGUA) {
-                    ven = "ventaja";
-                    return ven;    
+                   
+                    return Ventaja.VENTAJA;    
                 }
                 else if (ejemplo.tipo1 == Tipo.FUEGO || ejemplo.tipo1 == Tipo.BICHO ) {
-                    ven = "desventaja";
-                    return ven;
+                    
+                    return Ventaja.DESVENTAJA;
                 }
             case VOLADOR : 
                 if (ejemplo.tipo1 == Tipo.PLANTA || ejemplo.tipo1 == Tipo.BICHO) {
-                    ven = "ventaja";
-                    return ven;    
+                    
+                    return Ventaja.VENTAJA;    
                 }
                 else if (ejemplo.tipo1 == Tipo.ELECTRICO || ejemplo.tipo1 == Tipo.TIERRA ) {
-                    ven = "desventaja";
-                    return ven;
+                    
+                    return Ventaja.DESVENTAJA;
                 }
             case ELECTRICO : 
                 if (ejemplo.tipo1 == Tipo.AGUA || ejemplo.tipo1 == Tipo.VOLADOR) {
-                    ven = "ventaja";
-                    return ven;    
+                    
+                    return Ventaja.VENTAJA;    
                 }
                 else if (ejemplo.tipo1 == Tipo.TIERRA || ejemplo.tipo1 == Tipo.PLANTA ) {
-                    ven = "desventaja";
-                    return ven;
+                    return Ventaja.DESVENTAJA;
                 }
             case BICHO : 
                 if (ejemplo.tipo1 == Tipo.PLANTA || ejemplo.tipo1 == Tipo.AGUA) {
-                    ven = "ventaja";
-                    return ven;    
+                    return Ventaja.VENTAJA;
+                    
                 }
                 else if (ejemplo.tipo1 == Tipo.FUEGO || ejemplo.tipo1 == Tipo.VOLADOR ) {
-                    ven = "desventaja";
-                    return ven;
+                    return Ventaja.DESVENTAJA;
                 }
             case TIERRA : 
                 if (ejemplo.tipo1 == Tipo.FUEGO || ejemplo.tipo1 == Tipo.ELECTRICO) {
-                    ven = "ventaja";
-                    return ven;    
+                    return Ventaja.VENTAJA;
+                      
                 }
                 else if (ejemplo.tipo1 == Tipo.PLANTA || ejemplo.tipo1 == Tipo.AGUA ) {
-                    ven = "desventaja";
-                    return ven;
+                    return Ventaja.DESVENTAJA;
                 }
 
                 break;
@@ -269,20 +273,18 @@ public class Pokemon {
             
                   
         }
-        ven = "Tipo no valido";
-        return ven;
+        return Ventaja.NEUTRO;
         
         
     }
-
     
     public void descansar(){
-        estamina = 100;
+        this.estamina = 100;
     }
 
     //Completar método
-    int aprenderAtaque(){
-        return 3;
+    public void aprenderAtaque(Movimiento movimiento, int posicion){
+        this.movimientos[posicion] = movimiento;
     }
 
     

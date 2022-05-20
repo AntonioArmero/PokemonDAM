@@ -1,3 +1,4 @@
+package modelo;
 public class MovimientoMejora {
 
     Mejora mejora;
